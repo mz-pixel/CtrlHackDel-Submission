@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
-import "./App.css";
-import "./form.css";
+import "../App.css";
+import "../form.css";
 
-const Form = () => {
+function Form() {
   const [formData, setFormData] = useState({
     name: "",
     patientId: "",
@@ -29,7 +29,6 @@ const Form = () => {
         "http://localhost:5000/submit-form",
         formData
       );
-      //   alert(response.data);
       setFormData({ name: "", patientId: "", severity: "" });
       navigate("/success"); // Redirect to success page after submission
     } catch (err) {
@@ -92,6 +91,6 @@ const Form = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Form;

@@ -1,10 +1,3 @@
-// // server.js
-// const express = require("express");
-// const cors = require("cors");
-// const bodyParser = require("body-parser");
-// const { Pool } = require("pg");
-// const dotenv = require("dotenv/config");
-
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
