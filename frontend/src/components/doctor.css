@@ -1,0 +1,40 @@
+.doctor-container {
+  padding: 20px;
+  /* font-family: Arial, sans-serif; */
+  /* background-color: #f4f4f4; */
+  border-radius: 8px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+  /* font-family: "Open Sans"; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #333;
+}
+
+.patient-info {
+  width: 20%;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.patient-info p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}

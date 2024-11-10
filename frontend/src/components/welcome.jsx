@@ -13,6 +13,10 @@ function Welcome() {
         <Link to="/submission">
           <button className="button">Go to Submission Form</button>
         </Link>
+        <p>CLick the button below to access your dashboard</p>
+        <Link to="/doc" className="specialist">
+          <button className="button">I'm a Specialist</button>
+        </Link>
       </div>
     </div>
   );
