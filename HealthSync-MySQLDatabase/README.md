@@ -1,4 +1,4 @@
- UPDATE: 2:00 AM 2024-11-10.
+UPDATE: 2:00 AM 2024-11-10. <br>
 As soon as the required VALUES are inserted for the patient, the database will trigger it's INSERT for appointment to find and set a date based on severity. 
 
 ###### NOT implemented yet 
