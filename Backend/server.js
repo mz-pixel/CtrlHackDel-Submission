@@ -1,28 +1,32 @@
-// server.js
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const { Pool } = require("pg");
-const dotenv = require("dotenv/config");
+// // server.js
+// const express = require("express");
+// const cors = require("cors");
+// const bodyParser = require("body-parser");
+// const { Pool } = require("pg");
+// const dotenv = require("dotenv/config");
 
-// Initialize the Express app
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import pg from "pg";
+import dotenv from "dotenv/config";
+
 const app = express();
 const port = 5000;
+const { Pool } = pg;
 
-// Enable CORS for cross-origin requests
 app.use(cors());
 app.use(bodyParser.json());
 
 // Set up the PostgreSQL connection pool
 const pool = new Pool({
-  user: "postgres", // Replace with your PostgreSQL username
+  user: "postgres",
   host: "localhost",
-  database: "CHD", // Replace with your PostgreSQL database name
-  password: process.env.DB_PASSWORD, // Replace with your PostgreSQL password
+  database: "CHD",
+  password: process.env.DB_PASSWORD, // uses password from the .env file to prevent data leak
   port: 5432,
 });
-
-// Test database connection
+//The code below tests wether the connection with database was established or not; for development purposes
 pool.connect((err) => {
   if (err) {
     console.error("Database connection error:", err.stack);
@@ -31,22 +35,23 @@ pool.connect((err) => {
   }
 });
 
-// Define API endpoint to handle form submissions
+//Following code handles form submission so it can be entered into the Database
 app.post("/submit-form", async (req, res) => {
-  const { name, email, age } = req.body;
+  const { name, patientId, severity } = req.body; //Collect information submitted from the form
 
   // Insert the data into the PostgreSQL database
   try {
-    const query = "INSERT INTO users (name, email, age) VALUES ($1, $2, $3)";
-    const result = await pool.query(query, [name, email, age]);
-    res.status(200).send("Data submitted successfully!");
+    const query =
+      "INSERT INTO patients (name, patient_id, severity) VALUES ($1, $2, $3)";
+    await pool.query(query, [name, patientId, severity]);
+    res.status(200).send("Data submitted successfully!"); //Send success feedback to user
   } catch (err) {
     console.error("Error inserting data:", err);
-    res.status(500).send("Error inserting data.");
+    res.status(500).send("Error inserting data."); //Send user the error so they are aware
   }
 });
 
-// Start the server
+// Start listening on the aforementioned port, default set to 5000
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on Port: ${port}`);
 });

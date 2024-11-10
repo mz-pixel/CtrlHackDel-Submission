@@ -1,77 +1,41 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Form from "./form";
 import "./App.css";
 
 const App = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    age: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/submit-form",
-        formData
-      );
-      alert(response.data);
-      setFormData({ name: "", email: "", age: "" });
-    } catch (err) {
-      console.error("Error submitting the form:", err);
-      alert("There was an error submitting the form.");
-    }
-  };
-
   return (
-    <div>
-      <h1>Submit your information</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="age">Age:</label>
-          <input
-            type="number"
-            id="age"
-            name="age"
-            value={formData.age}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/submission" element={<Form />} />
+        <Route path="/success" element={<Success />} />
+      </Routes>
+    </Router>
+  );
+};
+
+// Welcome component for the "/" route
+const Welcome = () => {
+  return (
+    <div className="welcome-container">
+      <h1>Welcome to Patient Submission Portal</h1>
+      <p>Click the button below to submit patient information.</p>
+      <Link to="/submission">
+        <button className="button">Go to Submission Form</button>
+      </Link>
+    </div>
+  );
+};
+
+const Success = () => {
+  return (
+    <div className="welcome-container">
+      <h1>Submission Successful!</h1>
+      <p>Thank you for submitting the patient information.</p>
+      <Link to="/">
+        <button className="button">Go Back to Home</button>
+      </Link>
     </div>
   );
 };
