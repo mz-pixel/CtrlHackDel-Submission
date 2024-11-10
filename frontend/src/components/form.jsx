@@ -1,7 +1,6 @@
-// src/Form.js
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import "./form.css";
 
@@ -12,7 +11,7 @@ function Form() {
     severity: "",
   });
 
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +29,7 @@ function Form() {
         formData
       );
       setFormData({ name: "", patientId: "", severity: "" });
-      navigate("/success"); // Redirect to success page after submission
+      navigate("/success");
     } catch (err) {
       console.error("Error submitting the form:", err);
       alert("There was an error submitting the form.");

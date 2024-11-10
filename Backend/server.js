@@ -11,7 +11,7 @@ const { Pool } = pg;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Set up the PostgreSQL connection pool
+// Set up the PostgreSQL connection
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
@@ -37,35 +37,27 @@ app.get("/get-first", async (req, res) => {
     if (result.rows.length === 0) {
       res.status(404).send("No patients found.");
     } else {
-      res.status(200).json(result.rows[0]); // Send the top row as the response
+      res.status(200).json(result.rows[0]);
     }
   } catch (err) {
     console.error("Error fetching data:", err);
     res.status(500).send("Error fetching data.");
   }
 });
-
+// The following code deletes the most severe case from the database (implying that the doctor has already met the person)
 app.delete("/del", async (req, res) => {
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
-
-    // First, get the patient with the highest severity
     const query = "SELECT * FROM patient ORDER BY severity DESC LIMIT 1";
     const result = await client.query(query);
-
     if (result.rows.length === 0) {
       res.status(404).send("No patients to delete.");
       return;
     }
-
     const patientId = result.rows[0].patient_id;
-
-    // Now delete the patient with the highest severity
     const deleteQuery = "DELETE FROM patient WHERE patient_id = $1";
     await client.query(deleteQuery, [patientId]);
-
-    // Commit the transaction
     await client.query("COMMIT");
 
     res.status(200).send("Patient deleted successfully.");
@@ -80,14 +72,13 @@ app.delete("/del", async (req, res) => {
 
 // Following code handles form submission so it can be entered into the Database
 app.post("/submit-form", async (req, res) => {
-  const { name, patientId, severity } = req.body; // Collect information submitted from the form
+  const { name, patientId, severity } = req.body;
 
-  // Start a transaction
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
 
-    // Insert the new patient data with NULL for doctors_name
+    // Insert query for new patient data, currently submist null value for doctors name as it was not implemented
     const insertQuery =
       "INSERT INTO patient (patient_name, patient_id, doctors_name, severity) VALUES ($1, $2, NULL, $3)";
     await client.query(insertQuery, [name, patientId, severity]);

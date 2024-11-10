@@ -4,7 +4,6 @@ import "./doctor.css";
 
 function Doctor() {
   const [patient, setPatient] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -16,10 +15,8 @@ function Doctor() {
         }
         const data = await response.json();
         setPatient(data);
-        setLoading(false);
       } catch (err) {
         setError(err.message);
-        setLoading(false);
       }
     };
 
@@ -28,29 +25,20 @@ function Doctor() {
   const handleDeletePatient = async () => {
     try {
       const response = await fetch("http://localhost:5000/del", {
-        method: "DELETE", // Send DELETE request
+        method: "DELETE",
       });
       if (!response.ok) {
         throw new Error("Failed to delete patient data");
       }
-      // After the request is successful, redirect the user
-      // navigate("/");
     } catch (err) {
       setError(err.message);
     }
   };
-  if (loading) {
-    return <div className="loading">Loading...</div>; // Display loading message
-  }
-
-  if (error) {
-    return <div className="error">Error: {error}</div>; // Display error message
-  }
 
   return (
     <div className="background-container">
       <div className="doctor-container">
-        <h1>Following is information for your next Patient!</h1>
+        <h1>Following is the information for your next Patient!</h1>
         {patient ? (
           <div className="patient-info">
             <p>
@@ -67,6 +55,7 @@ function Doctor() {
               {patient.doctors_name || "Not Assigned"}
             </p>
             <Link to={"/"}>
+              {/* redirect user to the home page*/}
               <button onClick={handleDeletePatient}>
                 Delete Patient from Database
               </button>
