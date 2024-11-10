@@ -1,0 +1,25 @@
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* padding-top: 20px; */
+  height: 100vh;
+  /* background-image: url("../../assets/back.jpg"); */
+  background-size: contain;
+}
+
+.welcome-container h1 {
+  font-size: 5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.welcome-container p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.welcome-container span {
+  color: rgb(93, 206, 224);
+}
