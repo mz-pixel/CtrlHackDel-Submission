@@ -3,5 +3,5 @@
 ###### trigger it's INSERT for appointment to find and set a date based on severity. 
 
 ###### - not implemented yet 
-######  - doctors_name for referal system (EASY, most of it is there, only need to add it)
-######  - incrementing severity everytime an appointment is rescheduled (HARDER)
+######        - doctors_name for referal system (EASY, most of it is there, only need to add it)
+######        - incrementing severity everytime an appointment is rescheduled (HARDER)
