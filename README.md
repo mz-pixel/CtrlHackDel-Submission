@@ -15,11 +15,8 @@ Medsync was created during the **CTRL+HACK+DEL Hackathon**, hosted at **York Uni
 ## 🚀 Features
 
 - 👨‍⚕️ Doctor and patient-facing dashboards
-- 🧠 Starvation-free priority scheduling logic
-- ✅ Login/logout with session persistence
 - 📄 Patient intake form with severity scoring
-- 🔒 Protected dashboard access (only when logged in)
-- ✨ Modern glassmorphism UI with responsive design
+- 🧠 Starvation-free priority scheduling logic
 
 ---
 
