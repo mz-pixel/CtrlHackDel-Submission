@@ -1,15 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./success.css";
 
 function Success() {
   return (
-    <div className="background-container">
-      <div className="success-container">
-        <h1>Submission Successful!</h1>
-        <p>Thank you for submitting the patient information.</p>
-        <Link to="/">
-          <button className="button">Go Back to Home</button>
+    <div className="success-page">
+      <div className="success-glass-card">
+        <h1 className="success-heading">Submission Successful!</h1>
+        <p className="success-message">
+          Thank you for submitting the patient information.
+        </p>
+        <Link to="/" className="back-button">
+          Go Back to Home
         </Link>
       </div>
     </div>

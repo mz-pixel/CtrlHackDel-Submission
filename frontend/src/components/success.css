@@ -1,19 +1,62 @@
-.success-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+/* Full-page gradient background */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #d9f2fa, #ffffff);
   height: 100vh;
-  background-size: contain;
 }
 
-.success-container h1 {
-  font-size: 3em;
-  color: #333;
-  margin-bottom: 10px;
+/* Center content */
+.success-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
 }
 
-.success-container p {
-  font-size: 1.2em;
-  color: #555;
+/* Glassmorphism container */
+.success-glass-card {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading */
+.success-heading {
+  font-size: 28px;
+  font-weight: bold;
+  color: #003b73;
   margin-bottom: 20px;
+}
+
+/* Message */
+.success-message {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Button */
+.back-button {
+  background-color: #2264d1;
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background-color: #194ea1;
 }

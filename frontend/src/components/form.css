@@ -1,49 +1,81 @@
-/* src/App.css */
-
+/* Background and font */
+body,
 html {
-  background-color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #d9f2fa, #ffffff);
+  height: 100vh;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 0px;
-  padding-top: 20px;
+/* Full page centering */
+.form-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  height: 100%;
 }
-form {
+
+/* Glass-style card */
+.form-glass-card {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.form-heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: #003b73;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Form styling */
+.form-body {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: aliceblue;
 }
 
-label {
-  margin-bottom: 8px;
-  font-weight: bold;
+.form-body label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
 }
 
-input {
-  padding: 8px;
-  margin-bottom: 16px;
-  margin-left: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
+.form-body input {
   padding: 10px;
-  background-color: #35c2ab;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: border-color 0.2s ease;
 }
 
-button:hover {
-  background-color: #238878;
-  background-color: var(--secondary-color);
+.form-body input:focus {
+  border-color: #2264d1;
+  outline: none;
+}
+
+/* Button */
+.submit-button {
+  background-color: #2264d1;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #194ea1;
 }

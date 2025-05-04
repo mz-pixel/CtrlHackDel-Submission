@@ -32,7 +32,10 @@ pool.connect((err) => {
 app.get("/get-first", async (req, res) => {
   try {
     const query = "SELECT * FROM patient ORDER BY severity DESC LIMIT 1";
+    const query2 = "SELECT * FROM patient ORDER BY severity DESC";
     const result = await pool.query(query);
+    const result2 = await pool.query(query2);
+    console.log(result2);
 
     if (result.rows.length === 0) {
       res.status(404).send("No patients found.");

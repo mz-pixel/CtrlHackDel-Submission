@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./doctor.css";
 
 function Doctor() {
@@ -22,6 +22,7 @@ function Doctor() {
 
     fetchPatientData();
   }, []);
+
   const handleDeletePatient = async () => {
     try {
       const response = await fetch("http://localhost:5000/del", {
@@ -36,9 +37,14 @@ function Doctor() {
   };
 
   return (
-    <div className="background-container">
-      <div className="doctor-container">
-        <h1>Following is the information for your next Patient!</h1>
+    <div className="doctor-page">
+      <div className="doctor-glass-card">
+        <h1 className="doctor-heading">
+          Here is the information for your next patient:
+        </h1>
+
+        {error && <p className="error">{error}</p>}
+
         {patient ? (
           <div className="patient-info">
             <p>
@@ -54,15 +60,17 @@ function Doctor() {
               <strong>Doctor's Name:</strong>{" "}
               {patient.doctors_name || "Not Assigned"}
             </p>
-            <Link to={"/"}>
-              {/* redirect user to the home page*/}
-              <button onClick={handleDeletePatient}>
-                Delete Patient from Database
-              </button>
+
+            <Link
+              to="/"
+              className="delete-button"
+              onClick={handleDeletePatient}
+            >
+              Delete Patient from Database
             </Link>
           </div>
         ) : (
-          <p>No patient information available.</p> // Fallback if no patient data
+          <p className="loading">No patient information available.</p>
         )}
       </div>
     </div>
