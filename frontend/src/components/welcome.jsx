@@ -2,16 +2,20 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./welcome.css";
 import calendar from "../assets/calendar.svg";
+import AuthContext from "../context/AuthContext";
+import { useContext } from "react";
 
 function Welcome() {
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="background-container">
       <nav className="navbar">
         <h1 className="logo">MEDSYNC</h1>
         <div className="links">
-          <Link to="/doc">Register</Link>
+          <Link to="/register">Register</Link>
           <Link to="/doc" className="button-outline">
-            Dashboard
+            {user ? "Dashboard" : "Login"}
           </Link>
         </div>
       </nav>

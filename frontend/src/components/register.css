@@ -1,0 +1,92 @@
+/* Background and font */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #d9f2fa, #ffffff);
+  height: 100vh;
+}
+
+/* Page centering */
+.form-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  height: 100%;
+}
+
+/* Glass-style container */
+.form-container {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 400px;
+  width: 100%;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading */
+.form-container h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #003b73;
+  margin-bottom: 24px;
+}
+
+/* Form structure */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels and input layout */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2264d1;
+  outline: none;
+}
+
+/* Button */
+.form-button {
+  background-color: #2264d1;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #194ea1;
+}
