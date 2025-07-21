@@ -10,6 +10,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,9 +31,10 @@ const Login = () => {
         password: "",
       });
       console.log("redirecting ...");
+
       navigate("/Loader");
       setTimeout(() => {
-        navigate("/submission");
+        navigate("/");
       }, 1000);
     } catch (err) {
       console.error("Error submitting the form:", err);

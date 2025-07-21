@@ -13,10 +13,20 @@ function Welcome() {
       <nav className="navbar">
         <h1 className="logo">MEDSYNC</h1>
         <div className="links">
-          <Link to="/register">Register</Link>
-          <Link to="/doc" className="button-outline">
-            {user ? "Dashboard" : "Login"}
-          </Link>
+          {user ? (
+            <Link to="/logout">Logout</Link>
+          ) : (
+            <Link to="/register">Register</Link>
+          )}
+          {user && user.typeofdoctor === "Specialist" ? (
+            <Link to="/doc" className="button-outline">
+              Check Appointments
+            </Link>
+          ) : (
+            <Link to="/submission" className="button-outline">
+              {user ? "Submit Patient" : "Login"}
+            </Link>
+          )}
         </div>
       </nav>
       <div className="hero">
@@ -25,9 +35,15 @@ function Welcome() {
             <div className="hero-left">
               <h2>Healthcare Appointments, Reimagined.</h2>
               <p>Guaranteed optimized scheduling for all.</p>
-              <Link to="/submission" className="get-started">
-                Get Started
-              </Link>
+              {user && user.typeofdoctor === "Specialist" ? (
+                <Link to="/doc" className="button-outline2">
+                  Check Appointments
+                </Link>
+              ) : (
+                <Link to="/submission" className="get-started">
+                  {user ? "Enter Patient" : "Get Started"}
+                </Link>
+              )}
             </div>
             <div className="hero-right">
               <img src={calendar} alt="Calendar" />
