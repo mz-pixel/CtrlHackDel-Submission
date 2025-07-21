@@ -9,6 +9,7 @@ import Login from "./components/login";
 import Register from "./components/register";
 import ProtectedRoute from "./wrapper/ProtectedRoute";
 import Loader from "./components/Loader";
+import Logout from "./components/logout";
 import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/loader" element={<Loader />} />
+          <Route path="/logout" element={<Logout />} />
           <Route
             path="/submission"
             element={

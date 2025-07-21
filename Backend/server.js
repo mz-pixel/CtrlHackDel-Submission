@@ -144,7 +144,11 @@ app.post("/sessions", async (req, res) => {
       return;
     }
 
-    req.session.user = { id: user.id, email: user.email };
+    req.session.user = {
+      id: user.id,
+      email: user.email,
+      typeofdoctor: user.typeofdoctor,
+    };
     console.log("User session created:", req.session.user);
 
     await client.query("COMMIT");
@@ -205,6 +209,27 @@ app.get("/me", (req, res) => {
   } else {
     res.status(401).send("Not authenticated");
   }
+});
+
+app.post("/logout", async (req, res) => {
+  console.log("Logout request received:", req.body);
+
+  if (!req.session.user) {
+    return res.status(400).send("No user is currently logged in.");
+  }
+
+  const user = req.session.user;
+
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+      return res.status(500).send("Error during logout.");
+    }
+
+    console.log("User logged out successfully:", user);
+    res.clearCookie("connect.sid");
+    return res.status(200).send("Logout successful.");
+  });
 });
 
 app.listen(port, () => {
